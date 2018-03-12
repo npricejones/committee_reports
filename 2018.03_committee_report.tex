@@ -1,0 +1,175 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    \usepackage{natbib}
+    \bibliographystyle{apj}
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+    \usepackage{fancyhdr}
+    \usepackage{subcaption}  
+    \usepackage{wrapfig,booktabs}
+ 
+	\setcounter{topnumber}{2}
+	\setcounter{bottomnumber}{2}
+	\setcounter{totalnumber}{4}
+	\renewcommand{\topfraction}{0.85}
+	\renewcommand{\bottomfraction}{0.85}
+	\renewcommand{\textfraction}{0.15}
+	\renewcommand{\floatpagefraction}{0.8}
+	\renewcommand{\textfraction}{0.1}
+	\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+	\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+	\setlength{\intextsep}{2.5pt plus 0pt minus 0pt}
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+    \pagestyle{fancy}
+    \fancyhf{}
+    \rhead{Natalie Price-Jones}
+    \lhead{March 2018 Committee Report}
+    \rfoot{Page \thepage}
+
+
+    \begin{document}
+    
+    \section*{Committee Report}
+    
+    \begin{itemize}
+    	\item quick chem tag refresher
+    \end{itemize}
+   
+    \subsection*{Research progress}
+    
+    \subsection*{Relevant publications}
+    
+    \begin{itemize}
+    \item my own work
+    \item 
+    \end{itemize}
+    
+    \subsubsection*{Coding}
+    
+    \begin{itemize}
+    	\item Developed a package to create APOGEE-like spectra
+    	\begin{itemize}
+    		\item developed package to make clusters of varying sizes
+    		\item cluster member abundances and photospheric parameters taken from APOGEE
+    		\item photosphere is polynomial fitted out ala \citet{Price-Jones2017}
+    	\end{itemize}
+    	\item Began using DBSCAN algorithm
+    	\begin{itemize}
+    		\item has physically motivated parameters
+    		\item can find clusters of varying sizes
+    		\item can find clusters that are not spherically distributed
+    		\item have identified useful metrics to measure cluster finding success, both with known and unknown labels
+    		\item have converged on DBSCAN parameters that give good results for realistic clusters
+    	\end{itemize}
+    \end{itemize}
+    
+
+    
+    \subsection*{Upcoming work} 
+    \begin{itemize}
+    \item determine how to use DBSCAN when data points are missing
+    \item implement hierarchical DBSCAN
+    \item attending the Gaia sprint
+   		\begin{itemize}
+   		\item use Gaia DR2 - APOGEE overlap
+   		\end{itemize}
+    \end{itemize}
+    
+    \subsection*{Anticipated challenges}
+    \begin{itemize}
+    	\item Extending the algorithm to larger data sets of spectra
+    \end{itemize}
+
+    
+
+\section*{Timeline}
+
+\begin{itemize}
+\item By December 2017
+\begin{itemize} 
+\item write a basic cluster finding algorithm based on the principles described in \S\ref{sec:unsupalgo}
+\item test the algorithm on idealized synthetic cluster data without a background to determine an appropriate tolerance for similarity at which cluster recovery efficiency is high
+\item compare the results of using the algorithm on label space vs. spectral space
+\end{itemize}
+\item By May 2018
+\begin{itemize}
+\item write up a paper describing the cluster-finding algorithm and indicating which of label and spectral space is better for recovering clusters with high efficiency
+\item using APOGEE parameter distributions and observed open clusters, develop observational constraints on birth clusters parameters and the background distribution of stars that are the sole members of their birth clusters
+\begin{itemize}
+\item use open cluster observations to set upper limits of birth cluster chemical homogeneity and uniqueness
+\item use theoretical models of stellar migration to predict how many stars are likely to be observed from a single birth cluster given an overall sample size and survey radius (e.g. \citealt{Ting2015a})
+\item use APOGEE observations to develop a smooth mock chemical space background
+\end{itemize}
+\item modify the clustering algorithm to account for the presence of a background
+\end{itemize}
+\item By September 2018
+\begin{itemize}
+\item apply the cluster-finding algorithm to a realistic synthetic chemical space
+\item explore the limits on the parameters in Table~\ref{tab:param} that will allow synthetic clusters to be recovered with reasonably high efficiency
+\end{itemize}
+\item By December 2018
+\begin{itemize}
+\item write up a paper describing the parameter limits derived for synthetic clusters, and compare these with the limits derived by looking at open clusters
+\item investigate the likelihood that these limits hold for real star formation with this open cluster comparison, and tie this into theories of Milky Way evolution (rate of cluster disruption, GMC enrichment and stellar migration)
+\end{itemize}
+\item By May 2019
+\begin{itemize}
+\item use derived parameter limits to determine which surveys are likely to succeed in the limit of strong chemical tagging
+\item check that real open clusters are correctly identified by the algorithm when examined in spectral and label space with other observed stars serving as a potential source of background
+\item apply the cluster finding algorithm to observations from the APOGEE survey, beginning by using the principal component chemical space derived in \citet{Price-Jones2017}
+\item compare group membership when using principal components derived from the red clump vs red giant samples
+\end{itemize} 
+\item By September 2019
+\begin{itemize}
+\item write up a paper describing the results of cluster finding on observed clusters and on principal component chemical space
+\item apply my algorithm to the APOGEE red clump sample, using positional information to investigate how chemically similar populations of stars are distributed throughout the Galaxy
+\end{itemize}
+\item Starting September 2019
+\begin{itemize}
+\item begin writing thesis on results of ongoing real data cluster investigation.
+\item if spectra are available, apply my cluster finding algorithm to non-APOGEE data sets from other spectroscopic surveys
+\end{itemize}
+\end{itemize}
+
+%\bibliography{radpress}
+
+
+\end{document}
