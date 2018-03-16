@@ -13,6 +13,7 @@
 \documentclass[11pt]{article}
 
     \usepackage{natbib}
+    \usepackage[usenames, dvipsnames]{color}
     \bibliographystyle{apj}
     
     \usepackage[T1]{fontenc}
@@ -69,18 +70,44 @@
     
     \section*{Committee Report}
     
-    \begin{itemize}
-    	\item quick chem tag refresher
-    \end{itemize}
-   
+    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging. This year, I have primarily focussed on simulating a realistic chemical space and investigating how well I can understand that space.    
+
     \subsection*{Research progress}
     
-    \subsection*{Relevant publications}
+    After passing my thesis qualifying exam in August, I travelled to New York for the GMT Community Science Meeting: The Chemical Evolution of the Universe, where my application to give a talk was accepted to their section the local universe. I summarized much of the content of my paper that was in preparation at the time, and was able to get interesting feedback on my process. When I returned, I focussed for a time on resolving the referee report on my submitted paper, which was accepted in December and published in the March 2018 issue of MNRAS as \citet{Price-Jones2018}. While working o this, I submitted an application to speak at the Stellar Abundances in Dwarf Galaxies meeting-in-a-meeting at AAS Denver as well as an application to attend the Gaia Sprint in NYC. Both applications were accepted, but due to conflicting dates I will only be attending the Gaia Sprint in the beginning of June. This has spurred a new direction in my research to understand how Gaia can supplement more detailed chemical information to unpack Galactic history.
+    
+    \subsubsection*{Timeline progress}
+    
+    Colour coding of past and upcoming goals:
     
     \begin{itemize}
-    \item my own work
-    \item 
+    	\item {\color{RoyalBlue}blue} = completed goal
+    	\item {\color{ForestGreen} green} = in progress goal
+    	\item {\color{BurntOrange} orange} = replaced goal
     \end{itemize}
+    
+    
+    \begin{itemize}
+		\item By December 2017
+		\begin{itemize} 
+		\item {\color{BurntOrange} write a basic cluster finding algorithm} replaced with {\color{RoyalBlue} implement DBSCAN on synthetic data}
+		\item {\color{RoyalBlue} test the algorithm on idealized synthetic cluster data without a background to determine an appropriate tolerance for similarity at which cluster recovery efficiency is high}
+		\item {\color{RoyalBlue} compare the results of using the algorithm on label space vs. spectral space}
+		\end{itemize}
+		\item By May 2018
+		\begin{itemize}
+		\item {\color{ForestGreen} write up a paper describing the cluster-finding algorithm and indicating which of label and spectral space is better for recovering clusters with high efficiency}
+		\item {\color{RoyalBlue}using APOGEE parameter distributions and observed open clusters, develop observational constraints on birth clusters parameters and the background distribution of stars that are the sole members of their birth clusters}
+		\begin{itemize}
+		\item {\color{ForestGreen} use open cluster observations to set upper limits of birth cluster chemical homogeneity and uniqueness}
+		\item use theoretical models of stellar migration to predict how many stars are likely to be observed from a single birth cluster given an overall sample size and survey radius (e.g. \citealt{Ting2015a})
+		\item {\color{BurntOrange} use APOGEE observations to develop a smooth mock chemical space background} replaced with {\color{RoyalBlue} use a realistic cluster mass function to create a chemical space with a natural background due to single member clusters}
+		\end{itemize}
+		\item New goal: {\color{ForestGreen} consider how cluster finding will work for different chemical space dimensionalities}
+		\item {\color{BurntOrange} modify the clustering algorithm to account for the presence of a background} replaced with {\color{ForestGreen} consider how to use DBSCAN on missing data}
+		\item New goal: {\color{RoyalBlue}Come up with Gaia sprint strategic plan}
+		\end{itemize}
+	\end{itemize}
     
     \subsubsection*{Coding}
     
@@ -99,6 +126,7 @@
     		\item have identified useful metrics to measure cluster finding success, both with known and unknown labels
     		\item have converged on DBSCAN parameters that give good results for realistic clusters
     	\end{itemize}
+    	\item Investigating dimensionality of different morphological parts of the galaxy observed in the H-band
     \end{itemize}
     
 
@@ -116,34 +144,26 @@
     \subsection*{Anticipated challenges}
     \begin{itemize}
     	\item Extending the algorithm to larger data sets of spectra
+    	\item Generalizing my work to generic surveys (different bands, different 
     \end{itemize}
 
     
 
-\section*{Timeline}
+\section*{Full Timeline}
+
+Modifications from the original timeline appearing in the thesis proposal appear in {\color{Mulberry} purple}. Otherwise the colorcoding matches that of the Timeline progress section above, i.e.
+    
+    \begin{itemize}
+    	\item {\color{RoyalBlue}blue} = completed goal
+    	\item {\color{ForestGreen} green} = in progress goal
+    	\item {\color{BurntOrange} orange} = replaced goal
+    \end{itemize}
 
 \begin{itemize}
-\item By December 2017
-\begin{itemize} 
-\item write a basic cluster finding algorithm based on the principles described in \S\ref{sec:unsupalgo}
-\item test the algorithm on idealized synthetic cluster data without a background to determine an appropriate tolerance for similarity at which cluster recovery efficiency is high
-\item compare the results of using the algorithm on label space vs. spectral space
-\end{itemize}
-\item By May 2018
-\begin{itemize}
-\item write up a paper describing the cluster-finding algorithm and indicating which of label and spectral space is better for recovering clusters with high efficiency
-\item using APOGEE parameter distributions and observed open clusters, develop observational constraints on birth clusters parameters and the background distribution of stars that are the sole members of their birth clusters
-\begin{itemize}
-\item use open cluster observations to set upper limits of birth cluster chemical homogeneity and uniqueness
-\item use theoretical models of stellar migration to predict how many stars are likely to be observed from a single birth cluster given an overall sample size and survey radius (e.g. \citealt{Ting2015a})
-\item use APOGEE observations to develop a smooth mock chemical space background
-\end{itemize}
-\item modify the clustering algorithm to account for the presence of a background
-\end{itemize}
 \item By September 2018
 \begin{itemize}
-\item apply the cluster-finding algorithm to a realistic synthetic chemical space
-\item explore the limits on the parameters in Table~\ref{tab:param} that will allow synthetic clusters to be recovered with reasonably high efficiency
+\item {\color{RoyalBlue}apply the cluster-finding algorithm to a realistic synthetic chemical space} {\color{Mulberry} including dynamical effects like radial migration}
+\item {\color{ForestGreen} explore the limits on the cluster creation parameters that will allow synthetic clusters to be recovered with reasonably high efficiency}
 \end{itemize}
 \item By December 2018
 \begin{itemize}
@@ -169,7 +189,7 @@
 \end{itemize}
 \end{itemize}
 
-%\bibliography{radpress}
+%\bibliography{chemtag}
 
 
 \end{document}
