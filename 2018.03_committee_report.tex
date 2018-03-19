@@ -70,70 +70,38 @@
     
     \section*{Committee Report}
     
-    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging. This year, I have primarily focussed on simulating a realistic chemical space and investigating how well I can understand that space.    
+    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging. This year, I have primarily focussed on simulating a realistic chemical space and investigating how well I can understand that space with cluster-finding algorithms.    
 
     \subsection*{Degree progress}
     
-    After passing my thesis qualifying exam in August, I travelled to New York for the GMT Community Science Meeting: \emph{The Chemical Evolution of the Universe}, where my application to give a talk was accepted to their section on the local universe. I summarized much of the content of my paper that was in preparation at the time, and was able to get interesting feedback on my process. When I returned, I focussed for a time on resolving the referee report on my submitted paper, which was accepted to MNRAS in December and published in the March 2018 issue as \citet{Price-Jones2018}.  During this time I began researching cluster finding algorithms, and discovered two that might be well suited to our purposes: Affinity Propagation \citep{Frey2007} and Density-Based Spatial Clustering of Applications with Noise (DBSCAN - \citealt{Ester1996}). While the former held promise, it seemed it would be challenging to scale to our problem of interest (more than 10,000 stars), and it was difficult to connect its governing parameters to our physical understanding of star clusters. 
+    After passing my thesis qualifying exam in August, I travelled to New York for the GMT Community Science Meeting: \emph{The Chemical Evolution of the Universe}, where my application to give a talk was accepted to their section on the local universe. I summarized much of the content of my paper that was in preparation at the time, and was able to get interesting feedback on my process. When I returned, I resolved the referee report on my submitted paper, which was accepted to MNRAS in December and published in the March 2018 issue as \citet{Price-Jones2018}.  During this time I began researching cluster finding algorithms, and discovered two that might be well suited to our purposes: Affinity Propagation \citep{Frey2007} and Density-Based Spatial Clustering of Applications with Noise (DBSCAN - \citealt{Ester1996}). While the former held promise, it seemed it would be challenging to scale to our problem of interest (more than 10,000 stars), and it was difficult to connect its governing parameters to our physical understanding of star clusters. 
     
-    DBSCAN offered an alternative cluster finding algorithm that is well suited to the nature of our data. DBSCAN can cluster $\sim$ 50,000 high resolution spectra in less than a minute, is built to find clusters of varying sizes and identify outliers, and is parameterized by the density of the clusters to be identified. In addition, I have recently been investigating a version of this algorithm called hierarchical DBSCAN (HDBSCAN - \citealt{Pei2013}) which eliminates the need to tune one of DBSCAN's parameters and also produces a hierarchical relationship between the clusters.
+    DBSCAN is an alternative cluster finding algorithm that is well suited to the nature of our data. DBSCAN can cluster $\sim$ 50,000 high resolution spectra in less than a minute, is built to find clusters of varying sizes and identify outliers, and is parameterized by the density of the clusters to be identified. In addition, I have recently been investigating a version of this algorithm called hierarchical DBSCAN (HDBSCAN - \citealt{Pei2013}) which eliminates the need to tune one of DBSCAN's parameters and also produces a hierarchical relationship between the clusters.
     
-    In parallel with this process of identifying a useful clustering algorithm, I have also been working on creating realistic data for that algorithm to work on. Initially, cluster centres in chemical space were chosen from a normal distribution in each of their chemical abundances, then individual member stars were given photospheric temperatures and surface gravities (but assumed to truly have the same abundances as their centre). The abundances, temperatures and surface gravities for each star were given to a polynomial model that creates high resolution near infrared spectra \citep{Rix2016}. In this simple implementation, the total number of clusters and the number of members per cluster were fixed. This simple set up allowed me to develop a pipeline that adds noise to the spectra, then uses polynomial fits to remove the differences between spectra due to differing temperatures or surface gravities.
+    In parallel with this process of identifying a useful clustering algorithm, I have also been working on creating realistic data for that algorithm to work on. Initially, cluster centres in chemical space were chosen from a normal distribution in each of their chemical abundances, then individual member stars were given photospheric temperatures and surface gravities (but assumed to truly have the same abundances as their centre). The abundances, temperatures and surface gravities for each star were given to a polynomial model that creates high resolution near infrared spectra \citep{Rix2016}. In this simple implementation, the total number of clusters and the number of members per cluster were fixed. This simple set-up allowed me to develop a pipeline that adds noise to the spectra, then uses polynomial fits to remove the differences between spectra due to differing temperatures or surface gravities.
     
-    Once this pipeline was in place, I spent some time making the input spectra more realistic; I added a cluster mass function with $dN/dM\propt M^{-2}$ and used a Kroupa IMF to determine the number of members for a cluster of a given mass. In the interest of making my results relevant to real surveys, I also implemented a sampling rate to determine the number of members actually observed from a given cluster. Using this CMF really highlights the efficacy of DBSCAN as a cluster finding choice, as it naturally finds that many of the clusters with only a single observed member can be classified as outlier points.
+    Once this pipeline was in place, I spent some time making the input clusters more realistic; I added a cluster mass function with $dN/dM\propto M^{-2}$ and used a Kroupa IMF to determine the number of members for a cluster of a given mass. In the interest of making my results relevant to real surveys, I also implemented a sampling rate parameter to determine the number of members actually observed from a given cluster. Using this CMF highlights the efficacy of DBSCAN as a cluster finding choice, as it naturally finds that many of the clusters with only a single observed member can be classified as outlier points.
     
     In addition to this work developing my cluster finding simulation, I submitted an application to speak at the Stellar Abundances in Dwarf Galaxies meeting-in-a-meeting at AAS Denver as well as an application to attend the Gaia Sprint in NYC. Both applications were accepted, but due to conflicting dates I will only be attending the Gaia Sprint in the beginning of June. This has spurred a new direction in my research to understand how Gaia can supplement more detailed chemical information to unpack Galactic history.
-    
-    I summarize how the work described above fits into the original goals in my timeline in the section below. The following section describes what I am working on next.
-    
-    
-        \subsection*{Timeline progress}
-    
-    Colour coding of past and upcoming goals:
-    
-    \begin{itemize}
-    	\item {\color{RoyalBlue}blue} = completed goal
-    	\item {\color{ForestGreen} green} = in progress goal
-    	\item {\color{BurntOrange} orange} = replaced goal
-    \end{itemize}
-    
-    
-    \begin{itemize}
-		\item By December 2017
-		\begin{itemize} 
-		\item {\color{BurntOrange} write a basic cluster finding algorithm} replaced with {\color{RoyalBlue} implement DBSCAN on synthetic data}
-		\item {\color{RoyalBlue} test the algorithm on idealized synthetic cluster data without a background to determine an appropriate tolerance for similarity at which cluster recovery efficiency is high}
-		\item {\color{RoyalBlue} compare the results of using the algorithm on label space vs. spectral space}
-		\end{itemize}
-		\item By May 2018
-		\begin{itemize}
-		\item {\color{ForestGreen} write up a paper describing the cluster-finding algorithm and indicating which of label and spectral space is better for recovering clusters with high efficiency}
-		\item {\color{RoyalBlue}using APOGEE parameter distributions and observed open clusters, develop observational constraints on birth clusters parameters and the background distribution of stars that are the sole members of their birth clusters}
-		\begin{itemize}
-		\item {\color{ForestGreen} use open cluster observations to set upper limits of birth cluster chemical homogeneity and uniqueness}
-		\item use theoretical models of stellar migration to predict how many stars are likely to be observed from a single birth cluster given an overall sample size and survey radius (e.g. \citealt{Ting2015a})
-		\item {\color{BurntOrange} use APOGEE observations to develop a smooth mock chemical space background} replaced with {\color{RoyalBlue} use a realistic cluster mass function to create a chemical space with a natural background due to single member clusters}
-		\end{itemize}
-		\item New goal: {\color{ForestGreen} consider how cluster finding will work for different chemical space dimensionalities}
-		\item {\color{BurntOrange} modify the clustering algorithm to account for the presence of a background} replaced with {\color{ForestGreen} consider how to use DBSCAN on missing data}
-		\item New goal: {\color{RoyalBlue}Come up with Gaia sprint strategic plan}
-		\end{itemize}
-	\end{itemize}
+  
     
     \subsection*{Upcoming work and Anticipated Challenges} 
     
-    One primary goal of my work is to connect my simulated cluster finding to results from real surveys. I will be able to answer questions about when chemical tagging can be applied and what types of stellar associations one may expect to find. This has led me to use the method described in \citet{Price-Jones2018} to find the dimensionality of the chemical spaces observed with APOGEE. In addition, I have been working towards incorporating dynamics into my study by preparing for the upcoming Gaia DR2, specifically for studying its overlap with APOGEE.
+    One primary goal of my work is to connect my simulated cluster finding to results from real surveys. I will be able to answer questions about when chemical tagging can be applied and what types of stellar associations one may expect to find. This has led me to use the method described in \citet{Price-Jones2018} to find the dimensionality of the chemical spaces associated with the halo, thick disk, and thin disk populations. observed with APOGEE. In addition, I have been working towards incorporating dynamics into my study by preparing for the upcoming Gaia DR2, specifically for studying its overlap with APOGEE.
     
-    Another upcoming goal is to publish my preliminary simulation results in a way that is useful to the community. I outline the expected elements of that paper in the next section. One specific challenge I will face in this is understanding how my results on APOGEE-like spectra extend to surveys that observe in different bands (and thus sample different chemical space). On a smaller scale, I have already been encountering challenges in extending my algorithms to truly large data set ($>$ 100,000 stars). In addition, DBSCAN as written cannot account for partially masked data. I will need to develop a realistic method to handle places were data cannot be trusted before I can apply it to observed spectra.
+    Another upcoming goal is to publish my preliminary simulation results in a way that is useful to the community. I outline the expected elements of that paper in the next section. One specific challenge I will face in this is understanding how my results on APOGEE-like spectra extend to surveys that observe in different bands (and thus sample different chemical space). On a smaller scale, I have already been encountering challenges in extending my algorithms to truly large data set ($>$ 100,000 stars). In addition, DBSCAN as written cannot account for partially masked data. I will need to develop a realistic method to handle places where data cannot be trusted before I can apply it to observed spectra.
    
  
-\section*{Paper Outline}
+\section*{Cluster-finding method paper outline}
 
 The goal of my upcoming paper is to communicate what can be learned from a realistic chemical space from DBSCAN, in terms of cluster sizes and properties. Part of my work will be to explain the algorithm and the reasons it is useful for this scenario, as well as justifying my choices of parameters in terms of observed star clusters. I will also describe how I validate the results of DBSCAN's cluster finding, both in the case where the the true clusters are known (simulated data) and when they are not (simulated and observed data). Having justified my choice in algorithm, the main focus of the paper will be to explain what observational surveys may expect to learn from chemical tagging. In particular, the ability of a survey to observe chemical space clusters will depend on several factors. Some of these will depend on intrinsic physics, like the parameters of the CMF, the importance of radial migration and the star formation history. However some factors will be survey limited: the resolution of chemical space, the number of observed stars and the target population. For example, a survey of primarily disk stars will likely sample more clusters (with fewer members per cluster) than a similarly sized halo survey due to the difference in the overall population size. The resolution of chemical space is also a crucial in determining what can be learned from chemical tagging. Coarse resolution will lead to disparate clusters being merged in analysis, erasing detailed information about the star formation history. The paper will outline several examples of possible survey parameters and describe the number of clusters expected to be identified based on simulations with underlying cluster properties.
 
-\section*{Full Timeline}
+\section*{Timeline}
 
-New additions to original timeline appearing in the thesis proposal appear in {\color{Mulberry} purple}. Otherwise the colorcoding is as follows:
+This version of the timeline is modified from the original appearing in the thesis proposal. Temporally nearby goals are delineated in detail, while more distant goals are summarized as a series of papers. 
+
+\subsection*{Detailed upcoming timeline}
+Colorcoding is as follows:
     
     \begin{itemize}
     	\item {\color{RoyalBlue}blue} = completed goal
@@ -142,35 +110,52 @@ New additions to original timeline appearing in the thesis proposal appear in {\
     \end{itemize}
 
 \begin{itemize}
+
+\item By December 2017
+\begin{itemize} 
+\item {\color{BurntOrange} write a basic cluster finding algorithm} replaced with {\color{RoyalBlue} implement DBSCAN on synthetic data}
+\item {\color{RoyalBlue} test the algorithm on idealized synthetic cluster data without a background to determine an appropriate tolerance for similarity at which cluster recovery efficiency is high}
+\item {\color{RoyalBlue} compare the results of using the algorithm on label space vs. spectral space}
+\end{itemize}
+\item By May 2018
+\begin{itemize}
+\item {\color{ForestGreen} write up a paper describing the cluster-finding algorithm and indicating which of label and spectral space is better for recovering clusters with high efficiency}
+\item {\color{RoyalBlue}using APOGEE parameter distributions and observed open clusters, develop observational constraints on birth clusters parameters and the background distribution of stars that are the sole members of their birth clusters}
+\begin{itemize}
+\item {\color{ForestGreen} use open cluster observations to set upper limits of birth cluster chemical homogeneity and uniqueness}
+\item use theoretical models of stellar migration to predict how many stars are likely to be observed from a single birth cluster given an overall sample size and survey radius (e.g. \citealt{Ting2015})
+\item {\color{BurntOrange} use APOGEE observations to develop a smooth mock chemical space background} replaced with {\color{RoyalBlue} use a realistic cluster mass function to create a chemical space with a natural background due to single member clusters}
+\end{itemize}
+\item \emph{New goal}: {\color{ForestGreen} consider how cluster finding will work for different chemical space dimensionalities}
+\item {\color{BurntOrange} modify the clustering algorithm to account for the presence of a background} - \emph{this is no longer applicable since DBSCAN handles this naturally}
+\item \emph{New goal}: {\color{ForestGreen} make a decision about how to use DBSCAN on missing data}
+\item \emph{New goal}: {\color{RoyalBlue} make Gaia sprint strategic plan}
+\end{itemize}
 \item By September 2018
 \begin{itemize}
-\item {\color{RoyalBlue}apply the cluster-finding algorithm to a realistic synthetic chemical space} {\color{Mulberry} including dynamical effects like radial migration}
+\item {\color{RoyalBlue}apply the cluster-finding algorithm to a realistic synthetic chemical space} 
 \item {\color{ForestGreen} explore the limits on the cluster creation parameters that will allow synthetic clusters to be recovered with reasonably high efficiency}
-\end{itemize}
-\item By December 2018
-\begin{itemize}
-\item write up a paper describing the parameter limits derived for synthetic clusters, and compare these with the limits derived by looking at open clusters
-\item investigate the likelihood that these limits hold for real star formation with this open cluster comparison, and tie this into theories of Milky Way evolution (rate of cluster disruption, GMC enrichment and stellar migration)
-\end{itemize}
-\item By May 2019
-\begin{itemize}
-\item use derived parameter limits to determine which surveys are likely to succeed in the limit of strong chemical tagging
-\item check that real open clusters are correctly identified by the algorithm when examined in spectral and label space with other observed stars serving as a potential source of background
-\item apply the cluster finding algorithm to observations from the APOGEE survey, beginning by using the principal component chemical space derived in \citet{Price-Jones2017}
-\item compare group membership when using principal components derived from the red clump vs red giant samples
-\end{itemize} 
-\item By September 2019
-\begin{itemize}
-\item write up a paper describing the results of cluster finding on observed clusters and on principal component chemical space
-\item apply my algorithm to the APOGEE red clump sample, using positional information to investigate how chemically similar populations of stars are distributed throughout the Galaxy
-\end{itemize}
-\item Starting September 2019
-\begin{itemize}
-\item begin writing thesis on results of ongoing real data cluster investigation.
-\item if spectra are available, apply my cluster finding algorithm to non-APOGEE data sets from other spectroscopic surveys
+\item test clustering finding on observed data set with known open clusters
 \end{itemize}
 \end{itemize}
 
+\subsection*{Planned papers and associated goals}
+\begin{itemize}
+	\item Applications of hierarchical DBSCAN clustering to synthetic clusters including the effects of radial migration
+	\begin{itemize}
+	\item incorporate radial migration into sampling rate when creating synthetic clusters
+	\end{itemize}
+	\item Constrain the Milky Way CMF using clustering algorithms on APOGEE data
+	\begin{itemize}
+	\item include validation of clustering on observed open clusters
+	\item simulate chemical spaces with a variety of CMFs and apply cluster finding to find the which space yields clusters most similar to those found in APOGEE data
+	\end{itemize}
+	\item Predict chemical tagging capabilities of upcoming spectroscopic surveys like Sloan 5 (\url{http://www.sdss.org/future/})
+	\begin{itemize}
+	\item predict the dimensionality of the chemical space such surveys sample and the resolution of that sampling
+	\item extend the simulation of synthetic clusters to account for a greater number of stars and larger survey volume
+	\end{itemize}
+\end{itemize}
 \bibliography{chemtag}
 
 
