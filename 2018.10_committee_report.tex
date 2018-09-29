@@ -1,0 +1,169 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    \usepackage{natbib}
+    \usepackage[usenames, dvipsnames]{color}
+    \bibliographystyle{apj}
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+    \usepackage{fancyhdr}
+    \usepackage{subcaption}  
+    \usepackage{wrapfig,booktabs}
+ 
+	\setcounter{topnumber}{2}
+	\setcounter{bottomnumber}{2}
+	\setcounter{totalnumber}{4}
+	\renewcommand{\topfraction}{0.85}
+	\renewcommand{\bottomfraction}{0.85}
+	\renewcommand{\textfraction}{0.15}
+	\renewcommand{\floatpagefraction}{0.8}
+	\renewcommand{\textfraction}{0.1}
+	\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+	\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+	\setlength{\intextsep}{2.5pt plus 0pt minus 0pt}
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+    \pagestyle{fancy}
+    \fancyhf{}
+    \rhead{Natalie Price-Jones}
+    \lhead{October 2018 Committee Report}
+    \rfoot{Page \thepage}
+
+
+    \begin{document}
+    
+    \section*{Committee Report}
+    
+    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging. Since my last meeting, I have completed work for my first paper on recovering clusters in simulated chemical space with a density based clustering algorithm.    
+
+    \subsection*{Degree progress}
+
+	Over the past six months, I have been focussed on improving my cluster finding on chemical space and finalizing results for publication. Most of my time has been spent working on my paper on measuring the success of cluster finding algorithms on realistic chemical spaces, and I have nearly completed the submission draft. The simulated chemical spaces in the paper emulate APOGEE \citep{Majewski2017} chemical data, but the methods are widely applicable. I now use both spectra and abundances as chemical spaces to search for clusters, and make modifications to both to improve cluster finding performance. In the case of abundances, I test cluster recovery for several different choices of measurement noise, ranging from the current abundance uncertainties quoted by APOGEE in \citealt{DR14} to the theoretical minimum uncertainties for abundances derived from APOGEE spectra \citep{Ting}.
+	
+	In my initial thesis proposal, I had suggested two rather simple statistics to measure the success of cluster recovery; the homogeneity and completeness of the recovered clusters. However a measurement of these quantities assumes that the true cluster membership is already known. While these statistics might measure the success of a clustering algorithm on my synthetic data, they would not be relevant when clustering on real data. One way around this problem is to make use of open cluster data, since these groups are similar to the clusters I generate, but their membership is known even in observed data. To quantify the success of the clustering algorithm, I measured the recovery fraction of the open clusters: the fraction of open clusters that were matched to a group found by my clustering algorithm with high homogeneity and completeness. Currently, there are not enough open cluster members to make this recovery fraction a viable statistic, but in future the recovery fraction will provide a way to measure success of clustering on real data. In particular, I plan to return to the recovery fraction once open cluster data is publicly released from the GALAH spectroscopic survey \citep{galah}.
+    
+    In addition to the rest of my work, I attended the Gaia Sprint in NYC, where I developed the beginning of the framework I will use to apply my clustering algorithm to real data. In particular, I focussed testing alternate methods of filling in gaps where observations were missing or untrustworthy. I presented my work on clustering finding in simulated chemical spaces at the Dark Energy Survey workshop on near-field cosmology at the Kavli Institute for Cosmological Physics. I also applied and was accepted to the Life and Times of the Milky Way conference hosted by the Shanghai Astronomical Observatory, where I will be giving a contributed talk on my upcoming paper.
+  
+    
+    \subsection*{Upcoming work and Anticipated Challenges}
+    
+    My main focus before the next meeting will be submitting and responding to comments on my paper describing the success of my cluster-finding algorithm on simulated data. I will also be working on ways to make my simulation even more realistic, primarily by incorporating a better model for the Milky Way than the uniform disk 
+    
+	
+   
+ 
+\section*{Cluster-finding method paper outline}
+
+The goal of my upcoming paper is to communicate what can be learned from a realistic chemical space from DBSCAN, in terms of cluster sizes and properties. Part of my work will be to explain the algorithm and the reasons it is useful for this scenario, as well as justifying my choices of parameters in terms of observed star clusters. I will also describe how I validate the results of DBSCAN's cluster finding, both in the case where the the true clusters are known (simulated data) and when they are not (simulated and observed data). Having justified my choice in algorithm, the main focus of the paper will be to explain what observational surveys may expect to learn from chemical tagging. In particular, the ability of a survey to observe chemical space clusters will depend on several factors. Some of these will be governed intrinsic physics, like the parameters of the CMF, the importance of radial migration and the star formation history. However some factors will be survey limited: the resolution of chemical space, the number of observed stars and the target population. For example, a survey of primarily disk stars will likely sample more clusters (with fewer members per cluster) than a similarly sized halo survey due to the difference in the overall population size. The resolution of chemical space is also a crucial in determining what can be learned from chemical tagging. Coarse resolution will lead to disparate clusters being merged in analysis, erasing detailed information about the star formation history. The paper will outline several examples of possible survey parameters and describe the number of clusters expected to be identified based on simulations with underlying cluster properties.
+
+\section*{Timeline}
+
+This version of the timeline is modified from the original appearing in the thesis proposal. Temporally nearby goals are delineated in detail, while more distant goals are summarized as a series of papers. 
+
+\subsection*{Detailed upcoming timeline}
+Colorcoding is as follows:
+    
+    \begin{itemize}
+    	\item {\color{RoyalBlue}blue} = completed goal
+    	\item {\color{ForestGreen} green} = in progress goal
+    	\item {\color{BurntOrange} orange} = replaced goal
+    \end{itemize}
+
+Goals that were completed or replaced at the last committee report have been removed
+
+\begin{itemize}
+
+\item By May 2018
+\begin{itemize}
+\item {\color{ForestGreen} write up a paper describing the cluster-finding algorithm and indicating which of label and spectral space is better for recovering clusters with high efficiency}
+\item {\color{RoyalBlue}using APOGEE parameter distributions and observed open clusters, develop observational constraints on birth clusters parameters and the background distribution of stars that are the sole members of their birth clusters}
+\begin{itemize}
+\item {\color{RoyalBlue} use open cluster observations to set upper limits of birth cluster chemical homogeneity and uniqueness}
+\item use theoretical models of stellar migration to predict how many stars are likely to be observed from a single birth cluster given an overall sample size and survey radius (e.g. \citealt{Ting2015})
+\item {\color{RoyalBlue} use a realistic cluster mass function to create a chemical space with a natural background due to single member clusters}
+\end{itemize}
+\item \emph{New goal}: {\color{RoyalBlue} consider how cluster finding will work for different chemical space dimensionalities}
+\item \emph{New goal}: {\color{RoyalBlue} make a decision about how to use DBSCAN on missing data}
+\end{itemize}
+\item By September 2018
+\begin{itemize}
+\item {\color{RoyalBlue}apply the cluster-finding algorithm to a realistic synthetic chemical space} 
+\item {\color{RoyalBlue} explore the limits on the cluster creation parameters that will allow synthetic clusters to be recovered with reasonably high efficiency}
+\item {\color{RoyalBlue} test clustering finding on observed data set with known open clusters}
+\end{itemize}
+\item By December 2018
+\begin{itemize}
+\item {\color{BurntOrange} write up a paper describing the parameter limits derived for synthetic clusters, and compare these with the limits derived by looking at open clusters} - this paper now incorporated into initial cluster-finding paper
+\item investigate the likelihood that these limits hold for real star formation with this open cluster comparison, and tie this into theories of Milky Way evolution (rate of cluster disruption, GMC enrichment and stellar migration)
+\item \emph{New goal:}
+\end{itemize}
+\item By May 2019
+\begin{itemize}
+\item use derived parameter limits to determine which surveys are likely to succeed in the limit of strong chemical tagging
+	\begin{itemize}
+		\item {\color{ForestGreen} generate results for a variety of sampling rates}
+	\end{itemize}
+\item {\color{RoyalBlue} check that real open clusters are correctly identified by the algorithm when examined in spectral and label space with other observed stars serving as a potential source of background}
+\item {\color{ForestGreen} apply the cluster finding algorithm to observations from the APOGEE survey, beginning by using the principal component chemical space derived in \citet{Price-Jones2017}}
+\item {\color{ForestGreen} compare group membership when using principal components derived from the red clump vs red giant samples}
+\end{itemize} 
+\end{itemize}
+
+\subsection*{Planned papers and associated goals}
+\begin{itemize}
+	\item Applications of DBSCAN clustering to synthetic clusters including the effects of radial migration, a realistic Milky Way model and a variety of survey selection functions
+	\begin{itemize}
+	\item choose and simulate an appropriate Milky Way model, and choose different selection functions to sample it
+	\item incorporate radial migration into sampling rate when creating synthetic clusters
+	\end{itemize}
+	\item Constrain the Milky Way CMF using clustering algorithms on APOGEE data
+	\begin{itemize}
+	\item include validation of clustering on observed open clusters
+	\item simulate chemical spaces with a variety of CMFs and apply cluster finding to find the which space yields clusters most similar to those found in APOGEE data
+	\end{itemize}
+	\item Predict chemical tagging capabilities of upcoming spectroscopic surveys like Sloan 5 (\url{http://www.sdss.org/future/})
+	\begin{itemize}
+	\item predict the dimensionality of the chemical space such surveys sample and the resolution of that sampling
+	\item extend the simulation of synthetic clusters to account for a greater number of stars and larger survey volume
+	\end{itemize}
+\end{itemize}
+\bibliography{chemtag}
+
+
+\end{document}
