@@ -70,7 +70,7 @@
     
     \section*{Committee Report}
     
-    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging. Since my last meeting, I have completed work for my first paper on recovering clusters in simulated chemical space with a density based clustering algorithm.    
+    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging. Since my last meeting, I have completed work for my paper on recovering clusters in simulated chemical space with a density based clustering algorithm.    
 
     \subsection*{Degree progress}
 
@@ -83,7 +83,7 @@
     
     \subsection*{Upcoming work and Anticipated Challenges}
     
-    My main focus before the next meeting will be submitting and responding to comments on my paper describing the success of my cluster-finding algorithm on simulated data. I will also be working on ways to make my simulation even more realistic, primarily by incorporating a better model for the Milky Way than the uniform disk 
+    My main focus before the next meeting will be submitting and responding to comments on my paper describing the success of my cluster-finding algorithm on simulated data. I will also be working on ways to make my simulation even more realistic, primarily by incorporating a better model for the Milky Way than the uniform disk. I plan to include this on a future paper that compares the results of these more detailed simulations with observations from the APOGEE and GALAH surveys.
     
 	
    
@@ -131,7 +131,15 @@ Goals that were completed or replaced at the last committee report have been rem
 \begin{itemize}
 \item {\color{BurntOrange} write up a paper describing the parameter limits derived for synthetic clusters, and compare these with the limits derived by looking at open clusters} - this paper now incorporated into initial cluster-finding paper
 \item investigate the likelihood that these limits hold for real star formation with this open cluster comparison, and tie this into theories of Milky Way evolution (rate of cluster disruption, GMC enrichment and stellar migration)
-\item \emph{New goal:}
+\begin{itemize}
+\item \emph{New goal}: compare with APOGEE OCCAM sample
+\end{itemize}
+\item \emph{New goal}: Apply DBSCAN to APOGEE and GALAH data
+\begin{itemize}
+\item set up simulation to create GALAH like results
+\end{itemize}
+\item \emph{New goal}: More explicitly include radial migration and a Milky Way density profile in the simulated clusters
+\item \emph{New goal}: Extend DBSCAN to larger samples
 \end{itemize}
 \item By May 2019
 \begin{itemize}
@@ -142,15 +150,17 @@ Goals that were completed or replaced at the last committee report have been rem
 \item {\color{RoyalBlue} check that real open clusters are correctly identified by the algorithm when examined in spectral and label space with other observed stars serving as a potential source of background}
 \item {\color{ForestGreen} apply the cluster finding algorithm to observations from the APOGEE survey, beginning by using the principal component chemical space derived in \citet{Price-Jones2017}}
 \item {\color{ForestGreen} compare group membership when using principal components derived from the red clump vs red giant samples}
+\item \emph{New goal}: Write up paper on applications of DBSCAN to real data
 \end{itemize} 
 \end{itemize}
 
 \subsection*{Planned papers and associated goals}
 \begin{itemize}
-	\item Applications of DBSCAN clustering to synthetic clusters including the effects of radial migration, a realistic Milky Way model and a variety of survey selection functions
+	\item Comparison of DBSCAN results on real data to simulations including the effects of radial migration, a realistic Milky Way model and a variety of survey selection functions
 	\begin{itemize}
 	\item choose and simulate an appropriate Milky Way model, and choose different selection functions to sample it
 	\item incorporate radial migration into sampling rate when creating synthetic clusters
+	\item apply DBSCAN to real data
 	\end{itemize}
 	\item Constrain the Milky Way CMF using clustering algorithms on APOGEE data
 	\begin{itemize}
