@@ -83,12 +83,18 @@
     
     \subsection*{Upcoming work and Anticipated Challenges}
     
-    My main focus before the next meeting will be submitting and responding to comments on my paper describing the success of my cluster-finding algorithm on simulated data. I will also be working on ways to make my simulation even more realistic, primarily by incorporating a better model for the Milky Way than the uniform disk. I plan to include this on a future paper that compares the results of these more detailed simulations with observations from the APOGEE and GALAH surveys.
+    My main focus before the next meeting will be submitting and responding to comments on my paper describing the success of my cluster-finding algorithm on simulated data. I will also be working on ways to make my simulation even more realistic, primarily by incorporating a better model for the Milky Way than the uniform disk. I plan to include this on a future paper that compares the results of these more detailed simulations with the product of DBSCAN on observations from the APOGEE and GALAH surveys.
     
+    While I've already developed approaches to handling the missing parts of observations so DBSCAN can still be used, I anticipate some teething problems when first applying the algorithm to the real data. An additional challenge will be extending DBSCAN to larger data sets, as its currently topping out at about 50,000 stars. While we may initially split observed samples into kinematically-identified components of the galaxy like the halo and disk, it may eventually be useful to be able to interpret DBSCAN results on larger data sets. 
 	
    
  
-\section*{Cluster-finding method paper outline}
+\section*{DBSCAN applied to real data: paper outline}
+
+The successful application of DBSCAN to the APOGEE and GALAH datasets will lead to a publication of the results. Having already published a longer paper on the methods used to create a simulated chemical space for comparison, I will be free in this work to demonstrate what we can learn from the observations. The paper will primarily focus on presenting the largest clusters found by DBSCAN, with special attention paid to known open and globular clusters as checks for successful chemical space recovery.
+
+
+
 
 The goal of my upcoming paper is to communicate what can be learned from a realistic chemical space from DBSCAN, in terms of cluster sizes and properties. Part of my work will be to explain the algorithm and the reasons it is useful for this scenario, as well as justifying my choices of parameters in terms of observed star clusters. I will also describe how I validate the results of DBSCAN's cluster finding, both in the case where the the true clusters are known (simulated data) and when they are not (simulated and observed data). Having justified my choice in algorithm, the main focus of the paper will be to explain what observational surveys may expect to learn from chemical tagging. In particular, the ability of a survey to observe chemical space clusters will depend on several factors. Some of these will be governed intrinsic physics, like the parameters of the CMF, the importance of radial migration and the star formation history. However some factors will be survey limited: the resolution of chemical space, the number of observed stars and the target population. For example, a survey of primarily disk stars will likely sample more clusters (with fewer members per cluster) than a similarly sized halo survey due to the difference in the overall population size. The resolution of chemical space is also a crucial in determining what can be learned from chemical tagging. Coarse resolution will lead to disparate clusters being merged in analysis, erasing detailed information about the star formation history. The paper will outline several examples of possible survey parameters and describe the number of clusters expected to be identified based on simulations with underlying cluster properties.
 
