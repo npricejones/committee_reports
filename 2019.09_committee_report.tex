@@ -57,8 +57,7 @@
 	\setlength{\intextsep}{2.5pt plus 0pt minus 0pt}
     
     \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-    
-    
+     
     \pagestyle{fancy}
     \fancyhf{}
     \rhead{Natalie Price-Jones}
@@ -70,15 +69,15 @@
     
     \section*{Committee Report}
     
-    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging to identify groups of stars born in the same giant molecular cloud. Since my last meeting, I have begun testing chemical tagging on real data from the APOGEE survey, with remarkable success. 
+    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging to identify groups of stars born in the same giant molecular cloud. Since my last meeting, I have begun testing chemical tagging on real data from the Apace Point Observatory Galactic Evolution Experiment (APOGEE - \citealt{Majewski2017}), with remarkable success. 
 
     \subsection*{Degree progress}
 
-	I have now begun working in earnest toward my third publication regarding the feasibility of chemical tagging in the Milky Way. Having already established the dimensionality of the chemical space available and show that chemical tagging can recover birth clusters in simulated data, my next step was to attempt chemical tagging on abundances observed by the APOGEE \citep{Majewski2017} survey.
+	I have now begun working toward my third publication regarding the feasibility of chemical tagging in the Milky Way. Having already established the dimensionality of the chemical space available \citep{Price-Jones2018} and shown that chemical tagging can recover birth clusters in simulated data \citep{Price-Jones2019}, my next step was to attempt chemical tagging on abundances observed by the APOGEE survey.
 	
-	Over the past few months, I have tested several quality cuts on the APOGEE data to create a useful sample. In particular I have ensured that all stars in my dataset have measurements for each abundance of interest with <0.05 dex uncertainty. While my previous work has used higher dimensional abundance spaces (15 elements), in the observed data I have chosen just 5 elements to use for my chemical space: Mg, Al, Si, Mn, and Fe. Using just five abundances greatly increased the number of stars in my sample, and a well sampled chemical space is key to the success of chemical tagging. The abundances of the chosen elements can be measured well in the H-band (1.5 $\mu$m - 1.7 $\mu$m) spectra observed in APOGEE, and represent several nucleosynthetic sources. In particular, abundances of Mg and Si are enriched primarily by core collapse supernovae, while Mn and Fe are mostly synthesized in Type 1a supernovae. Choosing elements with different sources increases the ability of chemical tagging to distinguish between stars born in giant molecular clouds with different enrichment histories.
+	Over the past few months, I have tested several quality cuts on the APOGEE data to create a useful sample. In particular I have ensured that all stars in my dataset have measurements for each abundance of interest with <0.05 dex uncertainty. While my previous work has used higher dimensional abundance spaces (15 elements), in the observed data I have chosen just 5 elements to use for my chemical space: Mg, Al, Si, Mn, and Fe. Using only five abundances greatly increased the number of stars in my sample, and a well sampled chemical space is key to the success of chemical tagging. The abundances of the chosen elements can be measured well in the H-band (1.5 $\mu$m - 1.7 $\mu$m) spectra observed in APOGEE, and represent several nucleosynthetic sources. In particular, abundances of Mg and Si are enriched primarily by core collapse supernovae, while Mn and Fe are mostly synthesized in Type 1a supernovae. Choosing elements with different sources increases the ability of chemical tagging to distinguish between stars born in giant molecular clouds with different enrichment histories.
 	
-Directly applying Density Based Spatial Clustering Applications with Noise (DBSCAN - \citealt{Ester1996}) to my APOGEE-sourced chemical space has been remarkably successful. The groups identified by DBSCAN are on the whole slightly different than open clusters from the Open Cluster Chemical Analysis and Mapping	(OCCAM - \citealt{Frinchaboy2003}) survey. Open clusters, being chemical homogeneous and still physically associated populations (e.g. \citealt{DeSilva2006}, \citealt{Bovy2016}), are typically taken as proxies for birth clusters. The clusters identified in OCCAM are typically less compact than the DBSCAN identified groups. However, using age estimates from \citet{Mackereth2019}, we show that ages of stars in each group found by DBSCAN typically fall within a 2 Gyr range, consistent with each other within the age uncertainties. The stars match well to isochrones with their cluster-averaged age and metallicity in a spectroscopic Hertzsprung-Russell diagram, although our use of red giant stars means that isochrones do not diverge much in this space.
+Directly applying Density Based Spatial Clustering Applications with Noise (DBSCAN - \citealt{Ester1996}) to my APOGEE-sourced chemical space has been remarkably successful. The groups identified by DBSCAN are on the whole slightly different than open clusters from the Open Cluster Chemical Analysis and Mapping	(OCCAM - \citealt{Frinchaboy2003}) survey. Open clusters, being chemical homogeneous and still physically associated populations (e.g. \citealt{DeSilva2006}, \citealt{Bovy2016}), are typically taken as proxies for birth clusters. The clusters listed in OCCAM are typically less compact than the DBSCAN identified groups. However, using age estimates from \citet{Mackereth2019}, we show that ages of stars in each group found by DBSCAN typically fall within a 2 Gyr range, consistent with each other within the age uncertainties. The stars match well to isochrones with their group-averaged age and metallicity in a spectroscopic Hertzsprung-Russell diagram, although our use of red giant stars means that isochrones do not diverge much in this space.
 
 In addition, the group member abundances in other elements (ones not used by DBSCAN to identify the groups) are homogeneous. Even when compared to all APOGEE stars with a similar overall metallicity and Mg-abundance (<0.05 dex) the group members still exhibit less spread in other abundances. Both this and the age consistency within groups are a strong argument in favour of the success of chemical tagging.
 
@@ -86,19 +85,19 @@ Most recently, I have been exploring the Gaia \citep{GaiaCollaboration2016} kine
     
     \subsection*{Upcoming work and anticipated challenges}
     
-    I plan to make use of the orbital actions of the stars in my sample, following the spirit of the work on solar siblings soon to be presented in Webb et. al. (\emph{in prep}). The actions have been computed with \texttt{galpy} \citep{Bovy2015}) based on the kinematics reported in the Gaia satellite's DR2 \citep{GaiaCollaboration2016}. In Webb et. al. (\emph{in prep}), stars are chemically tagged to be similar to the Sun, and their actions are compared to those of stars in a suite of simulations that take the stars from a birth cluster to a solar-like orbit. 
+    I plan to make use of the orbital actions of the stars in my sample, following the spirit of the work on solar siblings soon to be presented in Webb, Price-Jones et. al. (\emph{in prep}). The actions have been computed with \texttt{galpy} \citep{Bovy2015} based on the kinematics reported in the Gaia satellite's DR2 \citep{GaiaCollaboration2016}. In Webb, Price-Jones et. al. (\emph{in prep}), stars are chemically tagged to be similar to the Sun, and their actions are compared to those of stars in a suite of simulations that take the stars from a birth cluster to a solar-like orbit. 
     
-    In my work, I will be more interested in exploring whether an initial cluster can reasonably produce the range of actions observed in the chemically tagged group members today. As in Webb et. al. (\emph{in prep}), I will make use of the Astrophysical Multipurpose Software Environment (AMUSE; \citealt{PortegiesZwart13}, \citealt{Pelupessy2013}, \citealt{PortegiesZwart2018}) to simulate cluster evolution in several realistic potentials, including a static case as well as allowing time-varying components like a bar and spiral arms.
+    In my work, I will be more interested in exploring whether an initial cluster can reasonably produce the range of actions observed in the chemically tagged group members today. As in Webb, Price-Jones et. al. (\emph{in prep}), I will make use of the Astrophysical Multipurpose Software Environment (AMUSE; \citealt{PortegiesZwart13}, \citealt{Pelupessy2013}, \citealt{PortegiesZwart2018}) to simulate cluster evolution in several realistic potentials, including a static case as well as allowing time-varying components like a bar and spiral arms.
     
     This work may evolve beyond a reasonable inclusion in the planned paper on my results of applying DBSCAN to APOGEE data, and so one major challenge will be completing it in a timely manner.
  
 \section*{DBSCAN applied to real data: paper outline}
 
-This paper will present all the clusters I recover from the APOGEE dataset with DBSCAN, including an exploration of how the clusters persist if the number of choice of elements used to compose the chemical space changes. The focus will be on highlighting the remarkable age and chemical consistency of the stars grouped by DBSCAN, with a couple of example clusters to examine more closely.
+My upcoming paper will present all the groups I recover from the APOGEE dataset with DBSCAN, including an exploration of how the groups persist if the number or choice of elements used to compose the chemical space changes. The focus will be on highlighting the remarkable age and chemical consistency of the stars grouped by DBSCAN, with a couple of example groups examined more closely.
 
-The paper will discuss the consequences of the relatively low number of clusters identified and expectations for larger spectroscopic surveys, as well as how we can expect to constrain the evolutionary history of the Milky Way. Armed with ages and chemical signatures, it is possible to infer details of the enrichment history of the galaxy, and perhaps even localize it if the N-body simulations described above can successfully emulate the clusters. The kinematics used in those simulations can help constrain the potential in which these clusters evolved. In particular, I plan to comment on the impact of radial migration in dispersing cluster members well beyond their birth radius.
+The paper will discuss the consequences of the relatively low number of groups identified and expectations for larger spectroscopic surveys, as well as how we can expect to constrain the evolutionary history of the Milky Way. Armed with ages and chemical signatures, it is possible to infer details of the enrichment history of the galaxy, and perhaps even localize it if the N-body simulations described above can successfully emulate the clusters. The kinematics used in those simulations can help constrain the potential in which these groups evolved. In particular, I plan to comment on the impact of radial migration in dispersing group members well beyond their birth radius.
 
-In addition to this, I will contrast the groups identified by DBSCAN in the APOGEE data with those found in a comparable simulated dataset similar to those I created for \citep{Price-Jones2019}. I will use this to extrapolate what future spectroscopic might expect to learn from chemical tagging.
+In addition to this, I will contrast the groups identified by DBSCAN in the APOGEE data with those found in a comparable simulated dataset similar to those I created for \citep{Price-Jones2019}. I will use this to extrapolate what future spectroscopic surveys might expect to learn from chemical tagging.
 
 
 \section*{Timeline}
@@ -161,7 +160,6 @@ Goals that were completed or replaced at the last committee report have been rem
 \item complete any revisions to paper describing applications of DBSCAN to APOGE data
 \item choose external examiner
 \item combine introduction with my publications to form a thesis
-\item \textbf{add a conclusion to the thesis???}
 \end{itemize}
 \end{itemize}
 
