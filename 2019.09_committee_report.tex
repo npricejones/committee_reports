@@ -1,0 +1,204 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    \usepackage{natbib}
+    \usepackage[usenames, dvipsnames]{color}
+    %\bibliographystyle{apj}
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+    \usepackage{fancyhdr}
+    \usepackage{subcaption}  
+    \usepackage{wrapfig,booktabs}
+ 
+	\setcounter{topnumber}{2}
+	\setcounter{bottomnumber}{2}
+	\setcounter{totalnumber}{4}
+	\renewcommand{\topfraction}{0.85}
+	\renewcommand{\bottomfraction}{0.85}
+	\renewcommand{\textfraction}{0.15}
+	\renewcommand{\floatpagefraction}{0.8}
+	\renewcommand{\textfraction}{0.1}
+	\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+	\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+	\setlength{\intextsep}{2.5pt plus 0pt minus 0pt}
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+    \pagestyle{fancy}
+    \fancyhf{}
+    \rhead{Natalie Price-Jones}
+    \lhead{March 2019 Committee Report}
+    \rfoot{Page \thepage}
+
+
+    \begin{document}
+    
+    \section*{Committee Report}
+    
+    The primary goal of my PhD work is to answer questions about the Milky Way's formation and evolution using chemical tagging to identify groups of stars born in the same giant molecular cloud. Since my last meeting, I have begun testing chemical tagging on real data from the APOGEE survey, with remarkable success. 
+
+    \subsection*{Degree progress}
+
+	I have now begun working in earnest toward my third publication regarding the feasibility of chemical tagging in the Milky Way. Having already established the dimensionality of the chemical space available and show that chemical tagging can recover birth clusters in simulated data, my next step was to attempt chemical tagging on abundances observed by the APOGEE \citep{Majewski2017} survey.
+	
+	Over the past few months, I have tested several quality cuts on the APOGEE data to create a useful sample. In particular I have ensured that all stars in my dataset have measurements for each abundance of interest with <0.05 dex uncertainty. While my previous work has used higher dimensional abundance spaces (15 elements), in the observed data I have chosen just 5 elements to use for my chemical space: Mg, Al, Si, Mn, and Fe. Using just five abundances greatly increased the number of stars in my sample, and a well sampled chemical space is key to the success of chemical tagging. The abundances of the chosen elements can be measured well in the H-band (1.5 $\mu$m - 1.7 $\mu$m) spectra observed in APOGEE, and represent several nucleosynthetic sources. In particular, abundances of Mg and Si are enriched primarily by core collapse supernovae, while Mn and Fe are mostly synthesized in Type 1a supernovae. Choosing elements with different sources increases the ability of chemical tagging to distinguish between stars born in giant molecular clouds with different enrichment histories.
+	
+Directly applying Density Based Spatial Clustering Applications with Noise (DBSCAN - \citealt{Ester1996}) to my APOGEE-sourced chemical space has been remarkably successful. The groups identified by DBSCAN are on the whole slightly different than open clusters from the Open Cluster Chemical Analysis and Mapping	(OCCAM - \citealt{Frinchaboy2003}) survey. Open clusters, being chemical homogeneous and still physically associated populations (e.g. \citealt{DeSilva2006}, \citealt{Bovy2016}), are typically taken as proxies for birth clusters. The clusters identified in OCCAM are typically less compact than the DBSCAN identified groups. However, using age estimates from \citet{Mackereth2019}, we show that ages of stars in each group found by DBSCAN typically fall within a 2 Gyr range, consistent with each other within the age uncertainties. The stars match well to isochrones with their cluster-averaged age and metallicity in a spectroscopic Hertzsprung-Russell diagram, although our use of red giant stars means that isochrones do not diverge much in this space.
+
+In addition, the group member abundances in other elements (ones not used by DBSCAN to identify the groups) are homogeneous. Even when compared to all APOGEE stars with a similar overall metallicity and Mg-abundance (<0.05 dex) the group members still exhibit less spread in other abundances. Both this and the age consistency within groups are a strong argument in favour of the success of chemical tagging.
+
+Most recently, I have been exploring the Gaia \citep{GaiaCollaboration2016} kinematics of the stars in the DBSCAN groups.
+    
+    \subsection*{Upcoming work and anticipated challenges}
+    
+    I plan to make use of the orbital actions of the stars in my sample, following the spirit of the work on solar siblings soon to be presented in Webb et. al. (\emph{in prep}). The actions have been computed with \texttt{galpy} \citep{Bovy2015}) based on the kinematics reported in the Gaia satellite's DR2 \citep{GaiaCollaboration2016}. In Webb et. al. (\emph{in prep}), stars are chemically tagged to be similar to the Sun, and their actions are compared to those of stars in a suite of simulations that take the stars from a birth cluster to a solar-like orbit. 
+    
+    In my work, I will be more interested in exploring whether an initial cluster can reasonably produce the range of actions observed in the chemically tagged group members today. As in Webb et. al. (\emph{in prep}), I will make use of the Astrophysical Multipurpose Software Environment (AMUSE; \citealt{PortegiesZwart13}, \citealt{Pelupessy2013}, \citealt{PortegiesZwart2018}) to simulate cluster evolution in several realistic potentials, including a static case as well as allowing time-varying components like a bar and spiral arms.
+    
+    This work may evolve beyond a reasonable inclusion in the planned paper on my results of applying DBSCAN to APOGEE data, and so one major challenge will be completing it in a timely manner.
+ 
+\section*{DBSCAN applied to real data: paper outline}
+
+This paper will present all the clusters I recover from the APOGEE dataset with DBSCAN, including an exploration of how the clusters persist if the number of choice of elements used to compose the chemical space changes. The focus will be on highlighting the remarkable age and chemical consistency of the stars grouped by DBSCAN, with a couple of example clusters to examine more closely.
+
+The paper will discuss the consequences of the relatively low number of clusters identified and expectations for larger spectroscopic surveys, as well as how we can expect to constrain the evolutionary history of the Milky Way. Armed with ages and chemical signatures, it is possible to infer details of the enrichment history of the galaxy, and perhaps even localize it if the N-body simulations described above can successfully emulate the clusters. The kinematics used in those simulations can help constrain the potential in which these clusters evolved. In particular, I plan to comment on the impact of radial migration in dispersing cluster members well beyond their birth radius.
+
+In addition to this, I will contrast the groups identified by DBSCAN in the APOGEE data with those found in a comparable simulated dataset similar to those I created for \citep{Price-Jones2019}. I will use this to extrapolate what future spectroscopic might expect to learn from chemical tagging.
+
+
+\section*{Timeline}
+
+This version of the timeline is modified from the original appearing in the thesis proposal. 
+
+\subsection*{Detailed upcoming timeline}
+Color-coding is as follows:
+    
+    \begin{itemize}
+    	\item {\color{RoyalBlue}blue} = completed goal
+    	\item {\color{ForestGreen} green} = in progress goal
+    \end{itemize}
+
+Goals that were completed or replaced at the last committee report have been removed
+
+\begin{itemize}
+
+\item By December 2018
+\begin{itemize}
+\item {\color{RoyalBlue} write up a paper describing the parameter limits derived for synthetic clusters, and compare these with the limits derived by looking at open clusters}
+\item {\color{ForestGreen} investigate the likelihood that these limits hold for real star formation with this open cluster comparison, and tie this into theories of Milky Way evolution (rate of cluster disruption, GMC enrichment and stellar migration)}
+\begin{itemize}
+\item {\color{RoyalBlue} compare with APOGEE OCCAM sample}
+\end{itemize}
+\item {\color{RoyalBlue} apply DBSCAN to APOGEE and GALAH data}
+\begin{itemize}
+\item {\color{ForestGreen} set up simulation to create GALAH like results}
+\end{itemize}
+\item {\color{RoyalBlue} more explicitly include radial migration and a Milky Way density profile in the simulated clusters}
+\item {\color{RoyalBlue} extend DBSCAN to larger samples}
+\item \emph{New goal:} run N-body simulations to explore likely range of cluster actions
+\item \emph{New goal:} test cluster persistence with changing number of chemical elements
+\end{itemize}
+\item By May 2019
+\begin{itemize}
+\item {\color{RoyalBlue} use derived parameter limits to determine which surveys are likely to succeed in the limit of strong chemical tagging}
+	\begin{itemize}
+		\item {\color{RoyalBlue} generate results for a variety of sampling rates}
+	\end{itemize}
+\item {\color{RoyalBlue} check that real open clusters are correctly identified by the algorithm when examined in spectral and label space with other observed stars serving as a potential source of background} 
+\item {\color{RoyalBlue} apply the cluster finding algorithm to observations from the APOGEE survey}
+\end{itemize}
+
+\item By September 2019
+\begin{itemize}
+\item {\color{RoyalBlue} start writing up a paper describing the results of cluster finding on observed abundances}
+\item {\color{RoyalBlue} apply my algorithm to APOGEE abundances, using Gaia DR kinematic information to investigate how chemically similar populations of stars are distributed throughout the Galaxy}
+\item {\color{ForestGreen} relate my findings when applying to APOGEE and GALAH to theories of Galactic chemical and dynamical evolution.}
+\end{itemize}
+\item By December 2019
+\begin{itemize}
+\item write introductory thesis chapter explaining how my three papers (chemical space dimensionality, DBSCAN results on simulated data, and DBSCAN results on real data) all fit together
+\item {finish paper describing application of DBSCAN to APOGEE data}
+\item find external committee member for thesis defense
+\item {\color{ForestGreen} apply more focus to making connections for a potential industry position}
+\end{itemize}
+\item By April 2020
+\begin{itemize}
+\item complete any revisions to paper describing applications of DBSCAN to APOGE data
+\item choose external examiner
+\item combine introduction with my publications to form a thesis
+\item \textbf{add a conclusion to the thesis???}
+\end{itemize}
+\end{itemize}
+
+What follows is a detailed timeline to track deadlines for completing my degree on time.
+\begin{itemize}
+\item By June 2020
+\begin{itemize}
+	\item submit thesis to external examiner (no later than June 1)
+	\item submit thesis to final oral exam committee and graduate administrator (no later than June 15 and ideally by June 1)
+\end{itemize}
+\item By July 2020
+\begin{itemize}
+\item submit final thesis title to graduate administrator (no later than July 1)
+\item ensure external examiner's thesis appraisal report is collected (no later than July 15)
+\end{itemize}
+\item During August 2020
+\begin{itemize}
+\item defend thesis
+\end{itemize}
+\end{itemize}
+
+%\subsection*{Planned papers and associated goals}
+%\begin{itemize}
+%	\item Presentation of predictions for future surveys with chemical tagging as a goal based on improved simulations including the effects of radial migration, a realistic Milky Way model and a variety of survey selection functions
+%	\begin{itemize}
+%	\item research relevant selection functions/survey techniques for the Milky Way Mapper in SDSS-V \citep{Kollmeier2017} and the Mauna Kea Spectroscopic Explorer \citep{Zhang2018}
+%	\item choose and simulate an appropriate Milky Way model
+%	\item directly include the effects of radial migration when choosing which stars are sampled from original clusters
+%	\end{itemize}
+%	\item Constrain the Milky Way CMF using clustering algorithms on APOGEE data
+%	\begin{itemize}
+%	\item include validation of clustering on observed open clusters
+%	\item simulate chemical spaces with a variety of CMFs and apply cluster finding to find the which space yields clusters most similar to those found in APOGEE data
+%	\end{itemize}
+%\end{itemize}
+\bibliographystyle{apj}
+\bibliography{sim}
+
+
+\end{document}
