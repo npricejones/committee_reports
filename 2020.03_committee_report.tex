@@ -70,21 +70,20 @@
     \section*{Committee Report}
 
 
-	My thesis assessing the feasibility of chemical tagging in the Milky Way is coming to a close. I have focused my efforts on the Apache Point Galactic Evolution Experiment (APOGEE - \citealt{Majewski2017}). Over the course of my degree, I have measured the dimensionality of APOGEE's chemical space \citep{Price-Jones2018}, performed a test of chemically tagging simulated clusters in that space \citep{Price-Jones2019}, and finally applied chemical tagging to APOGEE observations. I am aiming to submit my final publication at the end of March 2020.
+	My thesis assessing the feasibility of chemical tagging in the Milky Way is coming to a close. I have focused my efforts on testing chemical taggign with the Apache Point Galactic Evolution Experiment (APOGEE - \citealt{Majewski2017}). Over the course of my degree, I have measured the dimensionality of APOGEE's chemical space \citep{Price-Jones2018}, performed a test of chemically tagging simulated clusters in that space \citep{Price-Jones2019}, and finally applied chemical tagging to APOGEE observations. I am aiming to submit my final publication at the end of March 2020. My scheduled thesis defense date is July 10, 2020.
 
     \subsection*{Degree progress}
   
     Over the last five months, I have finalized my draft of a paper summarizing my results of applying chemical tagging on APOGEE abundances. I use Density Based Spatial Applications with Noise (DBSCAN - \citealt{Ester1996}) to identify chemically homogeneous groups of stars in the chemical space with eight dimensions. The eight dimensions are specified by chemical abundances: [Mg/Fe], [Al/Fe], [Si/Fe], [K/Fe], [Ti/Fe], [Mn/Fe], [Fe/H], and [Ni/Fe]. My application of DBSCAN recovers 21 groups, spread across the Milky Way (Figure~\ref{fig:mw}). Members of each group are more homogeneous than other APOGEE stars with similar [Fe/H] and [Mg/Fe] ($< 0.05$ dex difference), even in abundances not used for chemical tagging. Group members are are also consistent with having the same age according to estimates in \citet{Mackereth2019}. 
     
-    Thanks to the Gaia mission \citep{GaiaCollaboration2016, GaiaCollaboration2018}, I also have dynamical information for my stars, and I use this to calculate orbital actions (assuming the static potential \texttt{MW2014Potential} described in \citealt{Bovy2015}). I have been using the \textbf{AMUSE} framework to run N-body simulations of my groups in various Galactic potentials.
+    Early versions of my analysis used a five-dimensional abundance space. However, constructing a simulated chemical space as I did in \citet{Price-Jones2019} showed that this chemical space was insufficient for good cluster recovery. We tested several possible dimensionalities for our chemical space, from five to fifteen elements. We found that with eight elements, the groups we found in the simulated chemical space corresponded to input clusters with greater than 90\% homogeneity. 
+    
+    Thanks to the Gaia mission \citep{GaiaCollaboration2016, GaiaCollaboration2018}, I have dynamical information for the stars in my DBSCAN-identified groups, and I use this to calculate orbital actions (assuming the static potential \texttt{MW2014Potential} described in \citealt{Bovy2015}). I have been using the Astrophysical Multipurpose Software Environment (AMUSE; \citealt{Portegies2013, Pelupessy2013, Portegies2018}) framework to run N-body simulations of my groups in various Galactic potentials. In these simulations, I take a star identified as a group member and integrate it back in a realistic Milky Way potential until it has reached its birth position. I then instantiate a cluster of stars at that location in phase space and integrate them forward in time. Once I have integrated the cluster forward to the present, I calculate the orbital actions (under the same assumptions I used for the observed stars). I then compare the spread in these actions to the spread observed for the corresponding group found in the APOGEE data. 
+    
+    In addition to constructing simulations with \texttt{MW2014Potential} as a static potential, I have layered other potentials on top of the static case to construct steady-state spiral and transient spiral arm potentials that also include a dynamic Galactic bar potential. I find that of the three cases, the transient spiral arm potential comes the closest to recreating the spread in orbital actions observed in the groups I chemically tag in APOGEE.
 
-	In addition to this scientific work, I have recently qualified for the Three Minute Thesis University of Toronto semi-finals in late March. I am also preparing to travel to Baltimore (assuming my flights go through) to give a talk at the Space Telescope Science Institute for the The Local Group: Assembly and Evolution conference in April. 
+	In addition to this scientific work, I have recently qualified for the Three Minute Thesis University of Toronto semi-finals in late March. I am also preparing to travel to Baltimore (assuming my flights go through) to give a talk at the Space Telescope Science Institute for the The Local Group: Assembly and Evolution conference in April. Finally, in June I am planning to attend the SDSS-V 2020 Collaboration Meeting at the Center for Computational Astrophysics in New York.
 	
-    
-    \subsection*{Upcoming work and anticipated challenges}
-    
-    At this point, the final tasks of my PhD lie ahead of me. My defense date has been set for July 10, 2020. From the time of writing, I have two months to compile my thesis and submit to external examiner Charlie Conroy (deadline: May 10, 2020). I will also need to submit my final paper on applications of chemical tagging to APOGEE and deal with any potential referee comments.
-    
 \begin{figure}[h]
 \centering
 \includegraphics[width = 0.6\linewidth]{topdown_mw.jpg}
@@ -92,9 +91,14 @@
 \label{fig:mw}
 \end{figure}
 
+    
+    \subsection*{Upcoming work and anticipated challenges}
+    
+    At this point, the final tasks of my PhD lie ahead of me.  I will need to submit my final paper on applications of chemical tagging to APOGEE and deal with any potential referee comments so it can be incorporated into my thesis. My defense date has been set for July 10, 2020. From the time of writing, I have two months to compile my thesis and submit to external examiner Charlie Conroy (deadline: May 10, 2020). I will also need to prepare my presentation for the thesis defense.
+    
 	\subsection*{Post graduation plan}
 	
-	As has been discussed in several meetings, I do not plan to continue along an academic career path. Over the past few months, I have been working on crafting an industry-appropriate resume and developing a personal website to showcase my expertise. I have also been working on updating my LinkedIn profile page, and have created accounts on Monster, Indeed, and ZipRecruiter. I have spoken to several graduates of the astronomy PhD now pursuing careers in industry about the various merits of the Insight Fellowship program and the Lantern Institute as preparatory techniques for a data science career.
+	As has been discussed in several previous committee meetings, I do not plan to continue along an academic career path. Over the past few months, I have been working on crafting an industry-appropriate resume and developing a personal website to showcase my expertise. I have also been working on updating my LinkedIn profile page, and have created accounts on Monster, Indeed, and ZipRecruiter. I have spoken to several graduates of the astronomy PhD now pursuing careers in industry about the various merits of the Insight Fellowship program and the Lantern Institute as preparatory techniques for a data science career. At this time, I am aiming to take a break of a few weeks after my degree is complete before taking on a new position. While I plan to use my connections to begin my job search before that time, I will also be giving myself those few weeks as a reprieve from job-hunting.
 
 \section*{Timeline}
 
@@ -121,7 +125,7 @@ Goals that were completed or replaced at the last committee report have been rem
 \end{itemize}
 \item May 2020
 \begin{itemize}
-\item {complete any revisions to paper describing applications of DBSCAN to APOGE data}
+\item {complete any revisions to paper describing applications of DBSCAN to APOGEE data}
 \item {\color{ForestGreen} combine introduction with my publications to form a thesis}
 \item {submit thesis to external examiner (no later than May 10)}
 \item submit thesis to final oral exam committee and graduate administrator (no later than May 24 and ideally by May 1)
